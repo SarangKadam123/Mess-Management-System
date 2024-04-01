@@ -1,0 +1,61 @@
+// // Import required JDBC classes
+// import java.sql.Connection;
+// import java.sql.DriverManager;
+// import java.sql.PreparedStatement;
+// import java.sql.SQLException;
+
+// public class FeedbackPage extends JFrame {
+//     // Other variables remain unchanged
+
+//     // Database connection details
+//     private static final String DB_URL = "jdbc:mysql://localhost:3306/your_database";
+//     private static final String DB_USER = "username";
+//     private static final String DB_PASSWORD = "password";
+
+//     // Database query to insert feedback data
+//     private static final String INSERT_FEEDBACK_QUERY = "INSERT INTO feedback (rating, feedback_text) VALUES (?, ?)";
+
+//     public FeedbackPage() {
+//         // Other code remains unchanged
+//         submitButton.addActionListener(new ActionListener() {
+//             @Override
+//             public void actionPerformed(ActionEvent e) {
+//                 // Get rating and feedback text from form fields
+//                 int rating = starRatingPanel.getSelectedRating();
+//                 String feedbackText = feedbackTextArea.getText();
+
+//                 // Store feedback data in MySQL database
+//                 try {
+//                     // Establish database connection
+//                     Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+
+//                     // Create PreparedStatement for INSERT query
+//                     PreparedStatement preparedStatement = connection.prepareStatement(INSERT_FEEDBACK_QUERY);
+                    
+//                     // Set values for placeholders in the PreparedStatement
+//                     preparedStatement.setInt(1, rating);
+//                     preparedStatement.setString(2, feedbackText);
+
+//                     // Execute INSERT query
+//                     int rowsAffected = preparedStatement.executeUpdate();
+
+//                     // Check if insertion was successful
+//                     if (rowsAffected > 0) {
+//                         JOptionPane.showMessageDialog(null, "Thank you for your feedback! Feedback stored successfully.");
+//                         clearFields(); // Clear form fields after successful submission
+//                     } else {
+//                         JOptionPane.showMessageDialog(null, "Failed to store feedback. Please try again.");
+//                     }
+
+//                     // Close database resources
+//                     preparedStatement.close();
+//                     connection.close();
+//                 } catch (SQLException ex) {
+//                     ex.printStackTrace();
+//                     JOptionPane.showMessageDialog(null, "Error: Unable to store feedback. Please try again later.");
+//                 }
+//             }
+//         });
+//         // Other code remains unchanged
+//     }
+// }
