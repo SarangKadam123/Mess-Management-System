@@ -87,6 +87,7 @@ public class ManagerProfile extends JFrame implements ActionListener{
         backButton.setBounds(200, 300, 80, 30);
         backButton.addActionListener(this);
         add(backButton);
+        setResizable(false);
     }
 
     public void actionPerformed(ActionEvent ae) {

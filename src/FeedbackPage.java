@@ -75,6 +75,8 @@ public class FeedbackPage extends JFrame {
 
         add(mainPanel);
         setVisible(true);
+        setResizable(false);
+
     }
 
     private void clearFields() {

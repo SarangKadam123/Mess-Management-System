@@ -93,6 +93,8 @@ public class ClientEdit extends JFrame implements ActionListener{
        
         setBounds(450, 200, 600, 400);
         setVisible(true);
+        setResizable(false);
+
 
     }
 

@@ -176,8 +176,7 @@ public class signUp extends JFrame implements ActionListener{
         setBounds(450, 200, 650, 500);
         // setLocationRelativeTo(null);
         setVisible(true);
-
-
+        setResizable(false);
     }
 
     public void actionPerformed(ActionEvent ee){

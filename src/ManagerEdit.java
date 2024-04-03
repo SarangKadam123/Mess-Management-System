@@ -96,7 +96,7 @@ public class ManagerEdit extends JFrame implements ActionListener{
         setBounds(450, 200, 600, 400);
         // setLocationRelativeTo(null);
         setVisible(true);
-
+        setResizable(false);
 
     }
 

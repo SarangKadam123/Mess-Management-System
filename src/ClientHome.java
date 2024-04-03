@@ -150,6 +150,8 @@ public class ClientHome extends JFrame implements ActionListener {
         setBounds(300, 70, 1000, 700);
         // setLocationRelativeTo(null);
         setVisible(true);
+        setResizable(false);
+
     }
 
     public void actionPerformed(ActionEvent as){

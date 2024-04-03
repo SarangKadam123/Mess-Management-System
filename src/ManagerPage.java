@@ -124,8 +124,8 @@ public class ManagerPage extends JFrame implements ActionListener {
         feedBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae){
-                FeedbackPage feedbackPage = new FeedbackPage();
-                feedbackPage.setVisible(true);
+               new SeeFeedback();
+                setVisible(false);
             }
         });
         add(feedBtn);
@@ -135,6 +135,7 @@ public class ManagerPage extends JFrame implements ActionListener {
         setBounds(300, 70, 1000, 700);
         setLocationRelativeTo(null);
         setVisible(true);
+        setResizable(false);
     }
 
     public void actionPerformed(ActionEvent as){

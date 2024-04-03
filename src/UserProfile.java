@@ -86,6 +86,7 @@ public class UserProfile extends JFrame implements ActionListener{
 
         setBounds(500, 200, 500, 400);
         // setLocationRelativeTo(null);
+        setResizable(false);
         setVisible(true);
     }
 

@@ -32,6 +32,8 @@ public class clientMenuOpt extends JFrame implements ActionListener{
         setBounds(600, 250, 360, 360);
         // setExtendedState(MAXIMIZED_BOTH);
         setVisible(true);
+        setResizable(false);
+
     }
 
     @Override

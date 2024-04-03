@@ -1,38 +1,30 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import java.awt.event.*;
 
+public class setMenu extends JFrame implements ActionListener {
+    JButton submit, add, reset, backButton, removeButton;
+    JTextField itemNameField, priceField;
+    DefaultTableModel model;
+    JTable table;
 
-
-
-/*
- * take data from manager and then add it in database
- * runtime update data into seepage table
- * 
- * 
- */
-public class setMenu extends JFrame implements ActionListener{
-    JButton submit, add, reset, backButton;
-    setMenu(){
+    setMenu() {
         super("Set Menu");
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
 
-
-        DefaultTableModel model = new DefaultTableModel();
+        model = new DefaultTableModel();
         model.addColumn("Item");
         model.addColumn("Price");
         model.addRow(new Object[]{"Roti", 10});
         model.addRow(new Object[]{"Rice", 20});
 
-        JTable table = new JTable(model);
+        table = new JTable(model);
         table.setBorder(null);
 
-         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
         for (int i = 0; i < table.getColumnCount(); i++) {
             table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
@@ -41,36 +33,64 @@ public class setMenu extends JFrame implements ActionListener{
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBounds(0, 50, 500, 400);
         add(scrollPane);
-        
+
+        JLabel itemNameLabel = new JLabel("Item:");
+        itemNameLabel.setBounds(10, 10, 80, 30);
+        add(itemNameLabel);
+
+        itemNameField = new JTextField();
+        itemNameField.setBounds(100, 10, 150, 30);
+        add(itemNameField);
+
+        JLabel priceLabel = new JLabel("Price:");
+        priceLabel.setBounds(270, 10, 80, 30);
+        add(priceLabel);
+
+        priceField = new JTextField();
+        priceField.setBounds(350, 10, 100, 30);
+        add(priceField);
+
+        add = new JButton("Add");
+        add.setBounds(100, 500, 80, 30);
+        add.addActionListener(this);
+        add(add);
+
+        removeButton = new JButton("Remove");
+        removeButton.setBounds(200, 500, 100, 30);
+        removeButton.addActionListener(this);
+        add(removeButton);
+
         backButton = new JButton("Back");
-        backButton.setBounds(200, 500, 80, 30);
+        backButton.setBounds(320, 500, 80, 30);
         backButton.addActionListener(this);
         add(backButton);
 
         setBounds(500, 200, 500, 600);
         setVisible(true);
+        setResizable(false);
     }
 
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == backButton) {
             setVisible(false);
             new ManagerPage();
+        } else if (ae.getSource() == add) {
+            String itemName = itemNameField.getText();
+            String price = priceField.getText();
+            model.addRow(new Object[]{itemName, price});
+            itemNameField.setText("");
+            priceField.setText("");
+        } else if (ae.getSource() == removeButton) {
+            int selectedRow = table.getSelectedRow();
+            if (selectedRow != -1) {
+                model.removeRow(selectedRow);
+            } else {
+                JOptionPane.showMessageDialog(this, "Please select a row to remove.", "No Row Selected", JOptionPane.WARNING_MESSAGE);
+            }
         }
     }
 
-
-    // public void actionPerformed(ActionEvent ee){
-    //     if(ee.getSource() == submit){
-
-    //     }else if(ee.getSource() == reset){
-
-    //     }else if(ee.getSource() == cancle){
-    //         setVisible(false);
-    //     }
-    // }
-
-
-    public static void main(String args[]){
+    public static void main(String args[]) {
         new setMenu();
     }
 }

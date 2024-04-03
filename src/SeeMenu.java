@@ -41,6 +41,7 @@ public class SeeMenu extends JFrame implements ActionListener{
 
         setBounds(500, 200, 500, 600);
         setVisible(true);
+        setResizable(false);
     }
 
     public void actionPerformed(ActionEvent ae) {

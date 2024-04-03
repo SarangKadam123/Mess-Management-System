@@ -1,10 +1,21 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 
 public class login extends JFrame implements ActionListener {
 
     JButton login, signup, cancel;
+    JTextField username;
+    JPasswordField password;
+
+    // String url = "jdbc:mysql://localhost:3306/messdb";
+    // String u = "root", p = "2115";
     Choice loggingin ;
 
     public login() {
@@ -22,7 +33,7 @@ public class login extends JFrame implements ActionListener {
         JPanel usernamePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         usernamePanel.setPreferredSize(new Dimension(640, 50));
         JLabel lblusername = new JLabel("Username");
-        JTextField username = new JTextField(15);
+        username = new JTextField(15);
         usernamePanel.add(lblusername);
         usernamePanel.add(username);
 
@@ -30,7 +41,7 @@ public class login extends JFrame implements ActionListener {
         JPanel passwordPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         passwordPanel.setPreferredSize(new Dimension(640, 50));
         JLabel lblpassword = new JLabel("Password");
-        JPasswordField  password = new JPasswordField(15);
+        password = new JPasswordField(15);
 
         ImageIcon eye1 = new ImageIcon(ClassLoader.getSystemResource("icons/eyeClosed.png"));
         Image eyeClosed = eye1.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT);
@@ -120,14 +131,36 @@ public class login extends JFrame implements ActionListener {
         add(mainPanel);
         setBounds(400, 200, 640, 300);
         setVisible(true);
+        setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == login ) {
-            if(loggingin.getSelectedItem()=="Client"){
-                new ClientHome();
-                setVisible(false);
+            if (loggingin.getSelectedItem() == "Client") {
+                // String userid = username.getText();
+                // char[] chars = password.getPassword();
+                // String pass = new String(chars);
+                // String query = "SELECT * FROM Client WHERE username=? AND password=?";
+
+                // try (Connection connection = DriverManager.getConnection(url, u, p);
+                //         PreparedStatement ps = connection.prepareStatement(query)) {
+                //     ps.setString(1, userid);
+                //     ps.setString(2, pass);
+
+                //     ResultSet resultSet = ps.executeQuery();
+
+                //     if (resultSet.next()) {
+                //         JOptionPane.showMessageDialog(this, "Login Successful!");
+                        new ClientHome();
+                        setVisible(false);
+                //     } else {
+                //         JOptionPane.showMessageDialog(this, "Invalid username or password.\nPlease try again.");
+                //     }
+                // } catch (SQLException e) {
+                //     e.printStackTrace();
+                // }
+
             }else  if(loggingin.getSelectedItem()=="Manager"){
                 new ManagerPage();
                 setVisible(false);

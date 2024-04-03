@@ -32,13 +32,14 @@ public class managerMenuOpt extends JFrame implements ActionListener{
         setBounds(600, 250, 300, 300);
         // setExtendedState(MAXIMIZED_BOTH);
         setVisible(true);
+        setResizable(false);
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
         if(ae.getSource() == setMenu) {
             setVisible(false);
-            // new setMenu();
+            new setMenu();
         
 
         } else if(ae.getSource() == seeMenu) {

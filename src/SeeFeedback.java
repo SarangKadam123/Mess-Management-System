@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,6 +26,16 @@ public class SeeFeedback extends JFrame {
 
         // Add bar graph panel to frame
         add(barGraphPanel);
+
+        // Add back button
+        JButton backButton = new JButton("Back");
+        backButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                new ManagerPage().setVisible(true);
+            }
+        });
+        add(backButton, BorderLayout.SOUTH);
 
         setVisible(true);
     }
